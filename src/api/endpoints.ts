@@ -2,7 +2,7 @@ export const ENDPOINTS = {
     auth: {
         login: "/login",
         logout: "/logout",
-        me: "/me",
+        me: "/profile",
     },
 
     users: {
@@ -35,15 +35,8 @@ export const ENDPOINTS = {
 
     candidates: {
         all: "/candidates",
-        create: "/candidates",
 
         details: (id: number | string) =>
-            `/candidates/${id}`,
-
-        update: (id: number | string) =>
-            `/candidates/${id}`,
-
-        delete: (id: number | string) =>
             `/candidates/${id}`,
 
         analysis: (id: number | string) =>
@@ -54,7 +47,7 @@ export const ENDPOINTS = {
         all: "/stages",
 
         move: (id: number | string) =>
-            `/stages/${id}/move`,
+            `/applications/${id}/move`,
     },
 
     interviews: {
