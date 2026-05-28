@@ -1,7 +1,9 @@
 import api from "./axios";
+import { useAuthStore } from "@/store/auth-store";
 
+// ── Request: attach Bearer token ────────────────────────────────────
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+  const token = useAuthStore.getState().token;
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -10,13 +12,13 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// ── Response: handle 401 by logging out ─────────────────────────────
 api.interceptors.response.use(
   (response) => response,
 
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem("token");
-
+      useAuthStore.getState().logout();
       window.location.href = "/login";
     }
 

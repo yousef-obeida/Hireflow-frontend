@@ -1,21 +1,7 @@
-export interface ApiResponse<T> {
-    data: T;
-    message?: string;
-    status: number;
-}
+/**
+ * Re-export API envelope types from the central types module.
+ * Kept for backward compatibility with existing imports.
+ */
+export type { ApiSuccessResponse as ApiResponse, ApiErrorResponse } from "@/types";
 
-export interface PaginatedResponse<T> {
-    data: T[];
-    meta: {
-        total: number;
-        page: number;
-        limit: number;
-        totalPages: number;
-    };
-}
-
-export interface ApiErrorResponse {
-    message: string;
-    errors?: Record<string, string[]>;
-    statusCode: number;
-}
+export type { ApiSuccessResponse as PaginatedResponse } from "@/types";

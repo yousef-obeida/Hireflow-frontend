@@ -1,66 +1,49 @@
-/* eslint-disable react-refresh/only-export-components */
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { Slot } from "radix-ui"
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
-import { cn } from "@/lib/utils"
+import React from 'react';
+import { motion } from 'framer-motion';
+import type { ButtonVariant } from '@/types';
 
-const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-4xl border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
-        outline:
-          "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:bg-transparent dark:hover:bg-input/30",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
-        ghost:
-          "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
-        destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default:
-          "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5",
-        xs: "h-6 gap-1 px-2.5 text-xs has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-8 gap-1 px-3 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        lg: "h-10 gap-1.5 px-4 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
-        icon: "size-9",
-        "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm": "size-8",
-        "icon-lg": "size-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
-
-function Button({
-  className,
-  variant = "default",
-  size = "default",
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot.Root : "button"
-
-  return (
-    <Comp
-      data-slot="button"
-      data-variant={variant}
-      data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  )
+interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'ref'> {
+  variant?: ButtonVariant;
+  children: React.ReactNode;
+  id?: string;
 }
 
-export { Button, buttonVariants }
+export const Button: React.FC<ButtonProps> = ({
+  variant = 'primary',
+  children,
+  className = '',
+  id,
+  type = 'button',
+  disabled,
+  ...props
+}) => {
+  const baseStyles = 'inline-flex items-center justify-center font-medium transition-colors duration-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm font-semibold select-none';
+  
+  const variantStyles: Record<ButtonVariant, string> = {
+    primary: 'bg-[#0058bc] text-white hover:bg-[#0070eb] disabled:bg-gray-400 disabled:cursor-not-allowed',
+    secondary: 'bg-[#d0e1fb] text-[#54647a] hover:bg-[#d8e3fb] disabled:bg-gray-200 disabled:text-gray-400',
+    outline: 'border border-[#717786] text-[#414755] hover:bg-[#f0f3ff] disabled:border-gray-200 disabled:text-gray-400',
+    ghost: 'text-[#0058bc] hover:bg-[#0058bc]/5 disabled:text-gray-400',
+  };
+
+  const currentVariantClass = variantStyles[variant];
+
+  return (
+    <motion.button
+      id={id}
+      type={type}
+      disabled={disabled}
+      whileTap={disabled ? undefined : { scale: 0.97 }}
+      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+      className={`${baseStyles} ${currentVariantClass} ${className}`}
+      {...props}
+    >
+      {children}
+    </motion.button>
+  );
+};

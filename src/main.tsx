@@ -6,6 +6,7 @@ import { router } from "@/routes";
 
 import { ThemeProvider } from "@/providers/theme-provider";
 import { QueryProvider } from "@/providers/query-provider";
+import { AuthProvider } from "@/providers/auth-provider";
 
 import "@/index.css";
 
@@ -17,7 +18,9 @@ ReactDOM.createRoot(
   <React.StrictMode>
     <ThemeProvider>
       <QueryProvider>
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </QueryProvider>
     </ThemeProvider>
   </React.StrictMode>
