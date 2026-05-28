@@ -1,20 +1,12 @@
 import api from "@/api/axios";
 import { ENDPOINTS } from "@/api/endpoints";
-import type { User } from "@/types";
+import type { User, LoginResponse, LoginRequest } from "@/features/auth/types/auth.types";
 
 /* ------------------------------------------------------------------ */
 /*  Request / Response shapes                                          */
 /* ------------------------------------------------------------------ */
 
-export interface LoginRequest {
-  email: string;
-  password: string;
-}
-
-export interface LoginResponse {
-  token: string;
-  user: User;
-}
+export type { LoginRequest };
 
 export type ProfileResponse = User;
 

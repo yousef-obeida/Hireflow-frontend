@@ -1,5 +1,5 @@
-import api from "./axios";
-import { useAuthStore } from "@/store/auth-store";
+import api from "./client";
+import { useAuthStore } from "@/features/auth/store/auth.store";
 
 // ── Request: attach Bearer token ────────────────────────────────────
 api.interceptors.request.use((config) => {

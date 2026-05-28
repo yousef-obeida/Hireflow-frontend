@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuthStore } from "@/store/auth-store";
+import { useAuthStore } from "@/features/auth/store/auth.store";
 import { fetchProfile } from "@/services/auth.service";
 
 /**

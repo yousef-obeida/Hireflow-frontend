@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "@/App";
 import { ProtectedRoutes } from "./protected-routes";
 import { PublicRoutes } from "./public-routes";
+import { LoginPage } from "@/features/auth/pages/LoginPage";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <div className="p-10 text-2xl font-bold">Login Page (Placeholder)</div>,
+        element: <LoginPage />,
       },
       {
         path: "available-jobs",

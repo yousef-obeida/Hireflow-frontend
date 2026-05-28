@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { Type, Palette, MousePointerClick, FileEdit, Award, Layout, HelpCircle, LogOut } from 'lucide-react';
+import { useLogout } from '@/features/auth/api/auth.hooks';
 
 interface SidebarProps {
   activeSection: string;
@@ -17,6 +18,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onNavigate,
   id,
 }) => {
+  const { mutate: handleLogout } = useLogout();
   const menuItems = [
     { id: 'typography', label: 'Typography', icon: Type },
     { id: 'colors', label: 'Colors', icon: Palette },
@@ -72,7 +74,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <span>Help Center</span>
         </button>
         <button
-          onClick={() => alert('Log out trigger registered.')}
+          onClick={() => handleLogout()}
           className="w-full flex items-center gap-3 text-[#ba1a1a] px-4 py-3 hover:bg-[#ba1a1a]/5 rounded-xl text-left text-xs font-semibold select-none"
         >
           <LogOut className="w-4 h-4 shrink-0" />

@@ -14,6 +14,7 @@ export type InterviewStatus = 'scheduled' | 'completed' | 'cancelled';
 /* ── User (UserResource) ───────────────────────────────────────────── */
 export interface User {
   id: number;
+  user_id?: number;
   name: string;
   email: string;
   role: UserRole;
