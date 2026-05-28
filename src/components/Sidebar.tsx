@@ -4,8 +4,9 @@
  */
 
 import React from 'react';
-import { Type, Palette, MousePointerClick, FileEdit, Award, Layout, HelpCircle, LogOut } from 'lucide-react';
+import { Award, Layout, HelpCircle, LogOut, User, Briefcase, Users, Calendar } from 'lucide-react';
 import { useLogout } from '@/features/auth/api/auth.hooks';
+import { useAuthStore } from '@/features/auth/store/auth.store';
 
 interface SidebarProps {
   activeSection: string;
@@ -18,15 +19,23 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onNavigate,
   id,
 }) => {
+  const { user } = useAuthStore();
   const { mutate: handleLogout } = useLogout();
+  
   const menuItems = [
-    { id: 'typography', label: 'Typography', icon: Type },
-    { id: 'colors', label: 'Colors', icon: Palette },
-    { id: 'buttons', label: 'Buttons', icon: MousePointerClick },
-    { id: 'forms', label: 'Form Elements', icon: FileEdit },
-    { id: 'badges', label: 'Badges & Status', icon: Award },
-    { id: 'data', label: 'Data Display', icon: Layout },
+    { id: 'dashboard', label: 'Dashboard', icon: Layout },
+    { id: 'candidates', label: 'Candidates', icon: Users},
+    { id: 'job_openings', label: 'Job Openings', icon: Briefcase },
+    { id: 'pipelines', label: 'Pipelines', icon:Award },
   ];
+
+  if (user?.role === 'hr') {
+    menuItems.push({ id: 'interviews', label: 'Interviews', icon: Calendar });
+  }
+
+  if (user?.role === 'admin') {
+    menuItems.push({ id: 'users', label: 'Users', icon: User });
+  }
 
   return (
     <aside

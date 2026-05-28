@@ -13,8 +13,8 @@ import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Textarea } from '@/components/ui/Textarea';
 import { Checkbox } from '@/components/ui/Checkbox';
-import { CandidateCard } from '@/components/CandidateCard';
-import { CandidateTable } from '@/components/CandidateTable';
+import { CandidateCard } from '@/features/candidates/components/CandidateCard';
+import { CandidateTable } from '@/features/candidates/components/CandidateTable';
 
 // --- TYPOGRAPHY SECTION ---
 export const TypographySection: React.FC = () => {

@@ -3,6 +3,7 @@ import App from "@/App";
 import { ProtectedRoutes } from "./protected-routes";
 import { PublicRoutes } from "./public-routes";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
+import { CandidatesPage } from "@/features/candidates/pages/CandidatesPage";
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Navigate to="/available-jobs" replace />,
+        element: <Navigate to="/login" replace />,
       },
       {
         path: "login",
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "candidates",
-        element: <div className="p-10 text-2xl font-bold">Candidates Management (Placeholder)</div>,
+        element: <CandidatesPage />,
       },
       {
         path: "candidates/:id/analysis",

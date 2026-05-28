@@ -18,32 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ id }) => {
     >
       <div className="flex items-center gap-4 md:gap-10">
         <span className="text-xl font-bold text-[#0058bc]">Hireflow</span>
-        <div className="hidden md:flex gap-6 items-center">
-          <a
-            href="#"
-            className="text-xs font-semibold text-[#414755] hover:text-[#0058bc] transition-colors"
-          >
-            Dashboard
-          </a>
-          <a
-            href="#"
-            className="text-xs font-semibold text-[#414755] hover:text-[#0058bc] transition-colors"
-          >
-            Talent Pool
-          </a>
-          <a
-            href="#"
-            className="text-xs font-semibold text-[#414755] hover:text-[#0058bc] transition-colors"
-          >
-            Pipelines
-          </a>
-          <a
-            href="#"
-            className="text-xs font-semibold text-[#0058bc] border-b-2 border-[#0058bc] pb-1"
-          >
-            Analytics
-          </a>
-        </div>
+        
       </div>
 
       <div className="flex items-center gap-3">
