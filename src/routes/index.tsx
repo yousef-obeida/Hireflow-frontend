@@ -4,6 +4,7 @@ import { ProtectedRoutes } from "./protected-routes";
 import { PublicRoutes } from "./public-routes";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
 import { CandidatesPage } from "@/features/candidates/pages/CandidatesPage";
+import { JobsPage } from "@/features/jobs/pages/JobsPage";
 import { CvAnalysisPage } from "@/features/candidates/pages/CvAnalysisPage";
 import { PipelinePage } from "@/features/candidates/pages/PipelinePage";
 
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "jobs",
-        element: <div className="p-10 text-2xl font-bold">Jobs Management (Placeholder)</div>,
+        element: <JobsPage />,
       },
       {
         path: "candidates",
