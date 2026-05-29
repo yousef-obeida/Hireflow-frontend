@@ -4,6 +4,8 @@ import { ProtectedRoutes } from "./protected-routes";
 import { PublicRoutes } from "./public-routes";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
 import { CandidatesPage } from "@/features/candidates/pages/CandidatesPage";
+import { CvAnalysisPage } from "@/features/candidates/pages/CvAnalysisPage";
+import { PipelinePage } from "@/features/candidates/pages/PipelinePage";
 
 export const router = createBrowserRouter([
   {
@@ -46,11 +48,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "candidates/:id/analysis",
-        element: <div className="p-10 text-2xl font-bold">Candidate Analysis (Placeholder)</div>,
+        element: <CvAnalysisPage />,
       },
       {
-        path: "stages",
-        element: <div className="p-10 text-2xl font-bold">Stages (Placeholder)</div>,
+        path: "pipelines",
+        element: <PipelinePage />,
       },
       {
         path: "interviews",

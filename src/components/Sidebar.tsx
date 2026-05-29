@@ -1,9 +1,5 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Award, Layout, HelpCircle, LogOut, User, Briefcase, Users, Calendar } from 'lucide-react';
 import { useLogout } from '@/features/auth/api/auth.hooks';
 import { useAuthStore } from '@/features/auth/store/auth.store';
@@ -21,20 +17,22 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const { user } = useAuthStore();
   const { mutate: handleLogout } = useLogout();
+  const navigate = useNavigate();
+  const location = useLocation();
   
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: Layout },
-    { id: 'candidates', label: 'Candidates', icon: Users},
-    { id: 'job_openings', label: 'Job Openings', icon: Briefcase },
-    { id: 'pipelines', label: 'Pipelines', icon:Award },
+    { id: 'dashboard', label: 'Dashboard', icon: Layout ,path:'/dashboard'},
+    { id: 'candidates', label: 'Candidates', icon: Users,path:'/candidates'},
+    { id: 'job_openings', label: 'Job Openings', icon: Briefcase,path:'/jobs' },
+    { id: 'pipelines', label: 'Pipeline', icon:Award,path:'/pipelines' },
   ];
 
   if (user?.role === 'hr') {
-    menuItems.push({ id: 'interviews', label: 'Interviews', icon: Calendar });
+    menuItems.push({ id: 'interviews', label: 'Interviews', icon: Calendar ,path:'/interviews' });
   }
 
   if (user?.role === 'admin') {
-    menuItems.push({ id: 'users', label: 'Users', icon: User });
+    menuItems.push({ id: 'users', label: 'Users', icon: User,path:'/users'});
   }
 
   return (
@@ -57,12 +55,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <nav className="flex-1 space-y-1.5">
         {menuItems.map((item) => {
           const Icon = item.icon;
-          const isActive = activeSection === item.id;
+          const isActive = item.path 
+            ? location.pathname.startsWith(item.path) 
+            : activeSection === item.id;
 
           return (
             <button
               key={item.id}
-              onClick={() => onNavigate(item.id)}
+              onClick={() => {
+                onNavigate(item.id);
+                if (item.path) {
+                  navigate(item.path);
+                }
+              }}
               className={`w-full flex items-center gap-3 rounded-xl px-4 py-3 text-left font-medium transition-colors text-xs font-semibold select-none ${
                 isActive
                   ? 'bg-[#d0e1fb] text-[#263143]'

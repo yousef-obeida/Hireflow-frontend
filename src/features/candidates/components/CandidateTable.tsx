@@ -4,9 +4,11 @@
  */
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { Candidate } from '@/types';
 import { format } from 'date-fns';
 import { Button } from '@/components/ui/Button';
+import { Sparkles } from 'lucide-react';
 
 interface CandidateTableProps {
   candidates: Candidate[];
@@ -19,6 +21,7 @@ export const CandidateTable: React.FC<CandidateTableProps> = ({
   isLoading,
   className = '',
 }) => {
+  const navigate = useNavigate();
   if (isLoading) {
     return <div className="p-4 text-center text-[#717786]">Loading candidates...</div>;
   }
@@ -116,18 +119,16 @@ export const CandidateTable: React.FC<CandidateTableProps> = ({
                   {dateStr}
                 </td>
                 <td className="px-6 py-4">
-                  <div className="flex items-center justify-center">
-                    {candidate.cv_path ? (
-                      <Button 
-                        variant="ghost" 
-                        className="px-3 py-1.5 text-xs h-8"
-                        onClick={() => window.open(candidate.cv_path, '_blank')}
-                      >
-                        View CV
-                      </Button>
-                    ) : (
-                      <span className="text-xs text-gray-400">No CV</span>
-                    )}
+                  <div className="flex items-center justify-center gap-1">
+                    <Button 
+                      variant="ghost" 
+                      className="px-2.5 py-1.5 text-xs h-8 gap-1"
+                      onClick={() => navigate(`/candidates/${candidate.id}/analysis`)}
+                    >
+                      <Sparkles className="w-3 h-3" />
+                      CV Analysis
+                    </Button>
+                   
                   </div>
                 </td>
               </tr>
