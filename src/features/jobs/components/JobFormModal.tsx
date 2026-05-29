@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import type { Resolver } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Modal } from '@/components/ui/Modal';
@@ -46,7 +46,7 @@ export const JobFormModal: React.FC<JobFormModalProps> = ({
     register,
     handleSubmit,
     reset,
-    watch,
+    control,
     setValue,
     formState: { errors },
   } = useForm<CreateJobFormValues>({
@@ -83,8 +83,10 @@ export const JobFormModal: React.FC<JobFormModalProps> = ({
       });
     }
   }, [open, mode, job, reset]);
-
-  const currentStatus = watch('status');
+  const currentStatus = useWatch({
+    control,
+    name: 'status',
+  });
   const isPublic = currentStatus === 'open';
 
   const isCreate = mode === 'create';
