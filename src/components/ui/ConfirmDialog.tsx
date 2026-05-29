@@ -49,7 +49,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
       <div className="flex flex-col items-center text-center py-2">
         {/* Icon */}
         <div
-          className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 ${
+          className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 mt-[-16px] ${
             isDanger ? 'bg-[#ffdad6]' : 'bg-[#e7eeff]'
           }`}
         >

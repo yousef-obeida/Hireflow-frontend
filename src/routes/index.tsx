@@ -9,6 +9,7 @@ import { CvAnalysisPage } from "@/features/candidates/pages/CvAnalysisPage";
 import { PipelinePage } from "@/features/candidates/pages/PipelinePage";
 import { UsersPage } from "@/features/users/pages/UsersPage";
 import { JobDetailPage } from "@/features/jobs/pages/JobDetailPage";
+import { InterviewsPage } from "@/features/interviews/pages/InterviewsPage";
 
 export const router = createBrowserRouter([
   {
@@ -63,7 +64,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "interviews",
-        element: <div className="p-10 text-2xl font-bold">Interviews (HR Only) (Placeholder)</div>,
+        element: <InterviewsPage />,
       },
       {
         path: "users",

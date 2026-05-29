@@ -128,11 +128,11 @@ export const JobsTableRow: React.FC<JobsTableRowProps> = ({
           <AnimatePresence>
             {menuOpen && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: -4 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: -4 }}
+                initial={{ opacity: 0, scale: 0.95, x: 8 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                exit={{ opacity: 0, scale: 0.95, x: 8 }}
                 transition={{ duration: 0.15 }}
-                className="absolute right-0 top-full mt-1 z-20 w-40 bg-white rounded-xl border border-[#e2e8f0] shadow-lg py-1.5 overflow-hidden"
+                className="absolute right-8 top-0 z-20 w-40 bg-white rounded-xl border border-[#e2e8f0] shadow-lg py-1.5 overflow-hidden"
               >
                 <button
                   onClick={() => { onView?.(job); setMenuOpen(false); }}

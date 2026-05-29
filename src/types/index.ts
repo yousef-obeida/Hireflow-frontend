@@ -9,7 +9,6 @@ export type UserRole = 'admin' | 'hr';
 export type JobStatus = 'open' | 'closed';
 export type JobLocation = 'onsite' | 'remote' | 'hybrid';
 export type ApplicationStatus = 'active' | 'hired' | 'rejected';
-export type InterviewStatus = 'scheduled' | 'completed' | 'cancelled';
 
 /* ── User (UserResource) ───────────────────────────────────────────── */
 export interface User {
@@ -81,7 +80,6 @@ export interface Interview {
   time: string;
   interviewer: string;
   type: string;
-  status: InterviewStatus;
   application?: Application;
   created_at?: string;
   updated_at?: string;
