@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Award, Layout, HelpCircle, LogOut, User, Briefcase, Users, Calendar } from 'lucide-react';
+import { Layout, HelpCircle, LogOut, User, Briefcase, Users, Calendar, Columns3 } from 'lucide-react';
 import { useLogout } from '@/features/auth/api/auth.hooks';
 import { useAuthStore } from '@/features/auth/store/auth.store';
 
@@ -24,7 +24,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'dashboard', label: 'Dashboard', icon: Layout ,path:'/dashboard'},
     { id: 'candidates', label: 'Candidates', icon: Users,path:'/candidates'},
     { id: 'job_openings', label: 'Job Openings', icon: Briefcase,path:'/jobs' },
-    { id: 'pipelines', label: 'Pipeline', icon:Award,path:'/pipelines' },
+    { id: 'recuirment_status', label: 'Recuirment Status', icon:Columns3,path:'/pipelines' },
   ];
 
   if (user?.role === 'hr') {
@@ -42,13 +42,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
     >
       {/* Brand Launcher Block */}
       <div className="flex items-center gap-3 mb-8">
-        <div className="w-10 h-10 bg-[#0058bc] rounded-2xl flex items-center justify-center text-white shadow-sm shrink-0">
-          <Layout className="w-5 h-5 fill-current" />
+        <div className="w-12 h-12 bg-white border border-[#e2e8f0] rounded-2xl flex items-center justify-center shadow-lg shrink-0 overflow-hidden p-2.5">
+          <img src="/logo.png" alt="Hireflow Logo" className="w-full h-full object-contain" />
         </div>
-        <div>
-          <h2 className="font-sans font-bold text-lg text-[#111c2d] leading-none">Hireflow</h2>
-          <p className="text-[10px] text-[#717786] font-semibold tracking-wider uppercase mt-1">Recruitment Suite</p>
-        </div>
+        
+          <h2 className="font-sans text-xl !text-[#0058bc] leading-none mt-4" style={{ color: '#0058bc', fontWeight: 'bold' }}>Hireflow</h2>
+          
+        
       </div>
 
       {/* Main Nav Items */}

@@ -139,7 +139,7 @@ export function PipelinePage() {
       >
         <div>
           <h1 className="text-3xl font-bold tracking-tight !text-black" style={{ fontWeight: 'bold' }}>
-            Pipeline
+            Recuirment Status
           </h1>
           <p className="text-[#717786] text-sm mt-1">
             Drag and drop candidates between stages · {totalCandidates} candidate{totalCandidates !== 1 ? 's' : ''} total

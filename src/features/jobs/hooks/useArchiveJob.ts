@@ -20,7 +20,7 @@ export function useArchiveJob() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.jobs.all });
       queryClient.invalidateQueries({ queryKey: queryKeys.dashboard.stats });
-      toast.success('Job closed successfully.');
+      toast.success('Job deleted successfully.');
     },
     onError: (error) => {
       toast.error(getErrorMessage(error));

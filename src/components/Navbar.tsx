@@ -4,20 +4,23 @@
  */
 
 import React from 'react';
-import { Search, Bell, HelpCircle, Plus } from 'lucide-react';
+import { Search, Bell, Settings } from 'lucide-react';
+import { useAuthStore } from '@/features/auth/store/auth.store';
 
 interface NavbarProps {
   id?: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ id }) => {
+  const user = useAuthStore((state) => state.user);
+
   return (
     <nav
       id={id ?? 'hireflow-navbar'}
       className="sticky top-0 z-50 flex justify-between items-center px-4 sm:px-6 md:px-12 w-full h-16 bg-white/80 backdrop-blur-md border-b border-[#e2e8f0]/30 shadow-subtle select-none"
     >
       <div className="flex items-center gap-4 md:gap-10">
-        <span className="text-xl font-bold text-[#0058bc]">Hireflow</span>
+        <span className="text-xl font-bold text-[#0058bc]">Welcome Back {user?.name}</span>
         
       </div>
 
@@ -45,19 +48,20 @@ export const Navbar: React.FC<NavbarProps> = ({ id }) => {
           className="p-2 text-[#414755] hover:bg-[#f0f3ff] rounded-full transition-colors"
           title="Help"
         >
-          <HelpCircle className="w-5 h-5" />
+          <Settings className="w-5 h-5" />
         </button>
 
         <div className="h-6 w-px bg-gray-200 mx-1 hidden sm:block" />
 
-        {/* Action Button */}
-        <button
-          onClick={() => alert('Launching Create Job dialog template')}
-          className="bg-[#0058bc] hover:bg-[#0070eb] text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm hover:shadow-md cursor-pointer select-none shrink-0"
+        {/* User Profile */}
+        <div 
+          className="w-8 h-8 rounded-full bg-gradient-to-br from-[#0058bc] to-[#2563eb] text-white flex items-center justify-center text-xs font-bold cursor-pointer hover:opacity-90 transition-opacity shrink-0 ml-1"
+          title={user?.name ?? 'Profile'}
         >
-          <Plus className="w-4 h-4" />
-          <span>Create Job</span>
-        </button>
+          {user?.name
+            ? user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
+            : 'U'}
+        </div>
       </div>
     </nav>
   );

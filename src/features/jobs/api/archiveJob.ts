@@ -3,12 +3,11 @@ import { ENDPOINTS } from '@/api/endpoints';
 import type { ApiSuccessResponse, Job } from '@/types';
 
 /**
- * PUT /api/jobs/:id
+ * DELETE /api/jobs/:id
  *
- * "Archives" a job posting by setting its status to "closed".
- * This allows it to appear in the closed jobs filter instead of being hard-deleted.
+ * Deletes a job posting entirely.
  */
 export const archiveJob = async (id: number | string): Promise<Job> => {
-  const response = await api.put<ApiSuccessResponse<Job>>(ENDPOINTS.jobs.update(id), { status: 'closed' });
+  const response = await api.delete<ApiSuccessResponse<Job>>(ENDPOINTS.jobs.delete(id));
   return response.data.data;
 };

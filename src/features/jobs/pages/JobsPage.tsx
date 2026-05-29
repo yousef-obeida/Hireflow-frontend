@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useJobs } from '../hooks/useJobs';
 import { useCreateJob } from '../hooks/useCreateJob';
 import { useUpdateJob } from '../hooks/useUpdateJob';
@@ -19,6 +20,7 @@ import type { CreateJobFormValues } from '../schemas/job.schema';
  * archive dialog. All data mutations are delegated to React Query hooks.
  */
 export function JobsPage() {
+  const navigate = useNavigate();
   const {
     data: jobs,
     isLoading,
@@ -93,10 +95,10 @@ export function JobsPage() {
     });
   }, [archivingJob, archiveMutation]);
 
-  // ── View (placeholder) ──────────────────────────────────────────
-  const handleViewJob = useCallback(() => {
-    // TODO: navigate to detail page or open detail drawer
-  }, []);
+  // ── View ─────────────────────────────────────────────────────────
+  const handleViewJob = useCallback((job: Job) => {
+    navigate(`/jobs/${job.id}`);
+  }, [navigate]);
 
   // ── Filter change ───────────────────────────────────────────────
   const handleFilterChange = useCallback(

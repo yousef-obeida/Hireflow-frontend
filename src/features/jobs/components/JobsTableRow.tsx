@@ -154,7 +154,7 @@ export const JobsTableRow: React.FC<JobsTableRowProps> = ({
                   className="flex items-center gap-2.5 w-full px-4 py-2.5 text-sm text-[#ba1a1a] hover:bg-[#ffdad6]/30 transition-colors cursor-pointer"
                 >
                   <Archive className="w-3.5 h-3.5" />
-                  Close Job
+                  Delete Job
                 </button>
               </motion.div>
             )}

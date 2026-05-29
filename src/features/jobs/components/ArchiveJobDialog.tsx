@@ -30,13 +30,13 @@ export const ArchiveJobDialog: React.FC<ArchiveJobDialogProps> = ({
       open={open}
       onClose={onClose}
       onConfirm={onConfirm}
-      title="Close this job?"
+      title="Delete this job?"
       description={
         job
-          ? `"${job.title}" will be closed and moved to your closed listings. You can still view it later.`
-          : 'This job will be closed and moved to your closed listings.'
+          ? `"${job.title}" will be deleted and removed from your active listings.`
+          : 'This job will be deleted and removed from your active listings.'
       }
-      confirmLabel="Close Job"
+      confirmLabel="Delete Job"
       cancelLabel="Keep Open"
       variant="danger"
       loading={loading}

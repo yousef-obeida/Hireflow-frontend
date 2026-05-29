@@ -6,7 +6,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Mail, Lock, Layout, Sparkles } from 'lucide-react';
+import { Mail, Lock, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { useLogin } from '@/features/auth/hooks/useLogin';
@@ -67,8 +67,8 @@ export const LoginPage: React.FC = () => {
 
         {/* Top brand header */}
         <div className="relative z-10 flex items-center gap-3.5">
-          <div className="w-12 h-12 bg-white/15 backdrop-blur-md rounded-2xl flex items-center justify-center text-white border border-white/10 shadow-lg">
-            <Layout className="w-6 h-6 fill-current" />
+          <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center overflow-hidden border border-white/10 shadow-lg p-1.5">
+            <img src="/logo.png" alt="Hireflow Logo" className="w-full h-full object-contain" />
           </div>
           <span className="text-2xl font-bold tracking-tight text-white font-heading">
             Hireflow

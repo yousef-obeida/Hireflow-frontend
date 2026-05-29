@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCandidate, useCandidateAnalysis } from '../hooks/useCandidate';
+import { useAuthStore } from '@/store/auth-store';
 import { Button } from '@/components/ui/Button';
 import { ArrowLeft, Sparkles, MapPin, Clock, Briefcase, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -146,6 +147,7 @@ function AnalysisSkeleton() {
 export function CvAnalysisPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { user } = useAuthStore();
 
   const { data: candidate, isLoading: candidateLoading } = useCandidate(id ?? '');
   const { data: analysis, isLoading: analysisLoading, isError: analysisError } = useCandidateAnalysis(id ?? '');
@@ -223,14 +225,16 @@ export function CvAnalysisPage() {
             </div>
           </div>
         </div>
-        <Button
-          variant="primary"
-          className="px-5 py-2.5"
-          onClick={() => navigate(`/interviews`)}
-        >
-          <Briefcase className="w-4 h-4 mr-2" />
-          Schedule
-        </Button>
+        {user?.role === 'hr' && (
+          <Button
+            variant="primary"
+            className="px-5 py-2.5"
+            onClick={() => navigate(`/interviews`)}
+          >
+            <Briefcase className="w-4 h-4 mr-2" />
+            Schedule
+          </Button>
+        )}
       </motion.div>
 
       {/* ── Main Content Grid ───────────────────────────────────────── */}
