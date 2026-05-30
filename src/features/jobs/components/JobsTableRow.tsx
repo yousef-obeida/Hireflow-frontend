@@ -68,7 +68,10 @@ export const JobsTableRow: React.FC<JobsTableRowProps> = ({
     : 'N/A';
 
   return (
-    <tr className="group hover:bg-[#fafbff] transition-colors duration-150 border-b border-gray-100 last:border-0">
+    <tr
+      onClick={() => onView?.(job)}
+      className="group hover:bg-[#fafbff] transition-colors duration-150 border-b border-gray-100 last:border-0 cursor-pointer"
+    >
       {/* Job Title + ID */}
       <td className="px-6 py-4">
         <div>
@@ -118,7 +121,10 @@ export const JobsTableRow: React.FC<JobsTableRowProps> = ({
         <div className="flex items-center justify-center relative" ref={menuRef}>
           <button
             id={`job-actions-${job.id}`}
-            onClick={() => setMenuOpen((prev) => !prev)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setMenuOpen((prev) => !prev);
+            }}
             className="p-1.5 rounded-lg text-[#9ca3af] hover:text-[#414755] hover:bg-[#f0f3ff] transition-colors cursor-pointer"
             aria-label={`Actions for ${job.title}`}
           >
@@ -135,14 +141,7 @@ export const JobsTableRow: React.FC<JobsTableRowProps> = ({
                 className="absolute right-8 top-0 z-20 w-40 bg-white rounded-xl border border-[#e2e8f0] shadow-lg py-1.5 overflow-hidden"
               >
                 <button
-                  onClick={() => { onView?.(job); setMenuOpen(false); }}
-                  className="flex items-center gap-2.5 w-full px-4 py-2.5 text-sm text-[#414755] hover:bg-[#f0f3ff] transition-colors cursor-pointer"
-                >
-                  <Eye className="w-3.5 h-3.5 text-[#717786]" />
-                  View Details
-                </button>
-                <button
-                  onClick={() => { onEdit?.(job); setMenuOpen(false); }}
+                  onClick={(e) => { e.stopPropagation(); onEdit?.(job); setMenuOpen(false); }}
                   className="flex items-center gap-2.5 w-full px-4 py-2.5 text-sm text-[#414755] hover:bg-[#f0f3ff] transition-colors cursor-pointer"
                 >
                   <Pencil className="w-3.5 h-3.5 text-[#717786]" />
@@ -150,7 +149,7 @@ export const JobsTableRow: React.FC<JobsTableRowProps> = ({
                 </button>
                 <div className="h-px bg-[#e2e8f0] mx-3 my-1" />
                 <button
-                  onClick={() => { onArchive?.(job); setMenuOpen(false); }}
+                  onClick={(e) => { e.stopPropagation(); onArchive?.(job); setMenuOpen(false); }}
                   className="flex items-center gap-2.5 w-full px-4 py-2.5 text-sm text-[#ba1a1a] hover:bg-[#ffdad6]/30 transition-colors cursor-pointer"
                 >
                   <Archive className="w-3.5 h-3.5" />

@@ -11,6 +11,7 @@ import { PipelinePage } from "@/features/candidates/pages/PipelinePage";
 import { UsersPage } from "@/features/users/pages/UsersPage";
 import { JobDetailPage } from "@/features/jobs/pages/JobDetailPage";
 import { InterviewsPage } from "@/features/interviews/pages/InterviewsPage";
+import { DashboardOverview } from "@/features/dashboard/pages/DashboardOverview";
 
 export const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "dashboard",
-        element: <div className="p-10 text-2xl font-bold">Dashboard Page (Placeholder)</div>,
+        element: <DashboardOverview />,
       },
       {
         path: "jobs",

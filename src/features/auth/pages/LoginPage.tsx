@@ -81,7 +81,7 @@ export const LoginPage: React.FC = () => {
             <Sparkles className="w-3.5 h-3.5" />
             <span>Recruitment Suite v1.0.3</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-white font-heading tracking-tight leading-snug">
+          <h1 className="text-3xl !font-bold text-white font-heading tracking-tight leading-snug">
             Streamline your hiring process from sourcing to offer.
           </h1>
         </div>
@@ -97,7 +97,7 @@ export const LoginPage: React.FC = () => {
           {/* Header Block */}
           <div className="mb-8 text-left">
             <h2 
-              className="text-3xl font-bold text-black dark:text-black tracking-tight font-heading mb-2"
+              className="text-3xl !font-bold text-black dark:text-black tracking-tight font-heading mb-2"
               style={{ color: 'black' , fontWeight: 'bold' }}
             >
               Welcome back

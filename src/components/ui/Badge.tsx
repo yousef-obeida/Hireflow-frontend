@@ -35,7 +35,7 @@ export const Badge: React.FC<BadgeProps> = ({
       dot: 'bg-[#16a34a]',
     },
     rejected: {
-      container: 'bg-[rgba(186,26,26,0.06)] text-[#ba1a1a] border-red-100',
+      container: 'bg-[rgba(186,26,26,0.08)] text-[#ba1a1a] border-[#ba1a1a]/20',
       dot: 'bg-[#ba1a1a]',
     },
     draft: {

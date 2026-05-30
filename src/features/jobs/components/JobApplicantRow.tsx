@@ -52,7 +52,7 @@ export const JobApplicantRow: React.FC<JobApplicantRowProps> = ({ application })
       </td>
 
       {/* Stage */}
-      <td className="px-5 py-3.5 text-sm text-[#414755]">{stageName}</td>
+      <td className="px-5 py-3.5 text-sm text-[#414755] text-center">{stageName}</td>
 
       {/* Status */}
       <td className="px-5 py-3.5 text-center">

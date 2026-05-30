@@ -278,7 +278,7 @@ export function JobDetailPage() {
                   <th className="px-5 py-3 text-[11px] font-semibold text-[#717786] tracking-wider uppercase border-b border-gray-100">
                     Candidate
                   </th>
-                  <th className="px-5 py-3 text-[11px] font-semibold text-[#717786] tracking-wider uppercase border-b border-gray-100">
+                  <th className="px-5 py-3 text-[11px] font-semibold text-[#717786] tracking-wider uppercase border-b border-gray-100 text-center">
                     Stage
                   </th>
                   <th className="px-5 py-3 text-[11px] font-semibold text-[#717786] tracking-wider uppercase border-b border-gray-100 text-center">

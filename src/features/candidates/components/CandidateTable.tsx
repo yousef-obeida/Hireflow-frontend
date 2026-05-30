@@ -106,10 +106,7 @@ export const CandidateTable: React.FC<CandidateTableProps> = ({
                   {role}
                 </td>
                 <td className="px-6 py-4 text-center">
-                  <span className={`inline-flex items-center justify-center rounded-3xl px-2.5 py-1 text-xs font-semibold ${aiScore >= 90 ? 'text-green-500' :
-                      aiScore >= 80 ? 'text-yellow-500' :
-                        'text-orange-500'
-                    }`}>
+                  <span className="inline-flex items-center justify-center rounded-2xl px-3 py-1 text-xs font-medium bg-[#d0e1fb] text-[#0058bc]">
                     {aiScore}%
                   </span>
                 </td>

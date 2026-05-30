@@ -32,7 +32,7 @@ export function CandidatesPage() {
       
       {!isLoading && candidates.length > 0 && (
         <div className="flex items-center justify-between border-t border-gray-100 pt-4">
-          <div className="text-sm text-[#717786]">
+          <div className="text-sm font-semibold text-[#0058bc]">
             Showing {(currentPage - 1) * perPage + 1} to {Math.min(currentPage * perPage, totalCount)} of {totalCount} candidates
           </div>
           <div className="flex items-center gap-2">
