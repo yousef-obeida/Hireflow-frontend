@@ -54,27 +54,17 @@ export const InterviewsTableRow: React.FC<InterviewsTableRowProps> = ({
     .toUpperCase()
     .slice(0, 2);
 
-  // Hash-based avatar colour
-  const avatarColors = [
-    'bg-[#e7eeff] text-[#0058bc]',
-    'bg-[#dcfce7] text-[#15803d]',
-    'bg-[#fef3c7] text-[#b45309]',
-    'bg-[#ede9fe] text-[#7c3aed]',
-    'bg-[#fce7f3] text-[#be185d]',
-    'bg-[#ffdad6] text-[#ba1a1a]',
-  ];
-  const colorIdx = candidateName.length % avatarColors.length;
 
   return (
     <tr className="group hover:bg-[#fafbff] transition-colors duration-150 border-b border-gray-100 last:border-0">
       {/* Candidate Name */}
       <td className="px-6 py-4">
         <div className="flex items-center gap-3">
-          <div className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold ${avatarColors[colorIdx]}`}>
+          <div className="w-9 h-9 rounded-full bg-slate-800 text-white flex items-center justify-center text-xs font-medium">
             {initials}
           </div>
           <div>
-            <p className="font-semibold text-sm text-[#0058bc] group-hover:underline transition-colors cursor-default">
+            <p className="font-semibold text-sm text-[#111c2d] group-hover:underline transition-colors cursor-default">
               {candidateName}
             </p>
             {candidateEmail && (

@@ -45,10 +45,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="w-12 h-12 bg-white border border-[#e2e8f0] rounded-2xl flex items-center justify-center shadow-lg shrink-0 overflow-hidden p-2.5">
           <img src="/logo.png" alt="Hireflow Logo" className="w-full h-full object-contain" />
         </div>
-        
-          <h2 className="font-sans text-xl !text-[#0058bc] leading-none mt-4" style={{ color: '#0058bc', fontWeight: 'bold' }}>Hireflow</h2>
-          
-        
+        <span className="font-sans text-xl font-bold !text-[#0058bc] leading-none" style={{ color: '#0058bc', fontWeight: 'bold' }}>
+          Hireflow
+        </span>
       </div>
 
       {/* Main Nav Items */}

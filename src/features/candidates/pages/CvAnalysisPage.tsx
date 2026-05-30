@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useCandidate, useCandidateAnalysis } from '../hooks/useCandidate';
 import { useAuthStore } from '@/store/auth-store';
 import { Button } from '@/components/ui/Button';
-import { ArrowLeft, Sparkles, MapPin, Clock, Briefcase, ExternalLink } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Briefcase, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 /* ─── Local sub-components ─────────────────────────────────────────── */
@@ -259,11 +259,8 @@ export function CvAnalysisPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* AI Executive Summary */}
             <SectionCard className="lg:col-span-2">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
-                  <Sparkles className="w-4 h-4 text-white" />
-                </div>
-                <h2 className="text-lg font-bold text-[#111c2d] tracking-tight">AI Executive Summary</h2>
+              <div className="mb-4">
+                <h2 className="text-lg font-bold !text-black tracking-tight">AI Executive Summary</h2>
               </div>
               <p className="text-sm text-[#414755] leading-relaxed">
                 {analysis?.summary ?? 'No summary available.'}
@@ -287,31 +284,6 @@ export function CvAnalysisPage() {
                   </div>
                 </div>
               )}
-            </SectionCard>
-
-            {/* Role Alignment Score */}
-            <SectionCard>
-              <h2 className="text-lg font-bold text-[#111c2d] tracking-tight mb-5">Role Alignment</h2>
-              <ScoreDonut score={mainScore} />
-              {/* Breakdown bars */}
-              <div className="mt-6 space-y-3">
-                {breakdownMetrics.map((m) => (
-                  <MetricBar key={m.label} label={m.label} value={m.value} />
-                ))}
-              </div>
-            </SectionCard>
-          </div>
-
-          {/* Row 2: Recommendation + Extracted Skills */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Recommendation */}
-            <SectionCard className="lg:col-span-2">
-              <h2 className="text-lg font-bold text-[#111c2d] tracking-tight mb-4">
-                AI Recommendation
-              </h2>
-              <p className="text-sm text-[#414755] leading-relaxed">
-                {analysis?.recommendation ?? 'No recommendation available.'}
-              </p>
 
               {/* Resume link */}
               {candidate?.cv_path && (
@@ -327,9 +299,24 @@ export function CvAnalysisPage() {
               )}
             </SectionCard>
 
+            {/* Role Alignment Score */}
+            <SectionCard>
+              <h2 className="text-lg font-bold !text-black tracking-tight mb-5">Role Alignment</h2>
+              <ScoreDonut score={mainScore} />
+              {/* Breakdown bars */}
+              <div className="mt-6 space-y-3">
+                {breakdownMetrics.map((m) => (
+                  <MetricBar key={m.label} label={m.label} value={m.value} />
+                ))}
+              </div>
+            </SectionCard>
+          </div>
+
+          {/* Row 2: Extracted Skills */}
+          <div className="grid grid-cols-1 gap-6">
             {/* Extracted Skills */}
             <SectionCard>
-              <h2 className="text-lg font-bold text-[#111c2d] tracking-tight mb-4">Extracted Skills</h2>
+              <h2 className="text-lg font-bold !text-black tracking-tight mb-4">Extracted Skills</h2>
               {skills.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {skills.map((skill, i) => (
@@ -345,19 +332,19 @@ export function CvAnalysisPage() {
           {/* Row 3: Experience Details */}
           {analysis?.experience_years != null && (
             <SectionCard>
-              <h2 className="text-lg font-bold text-[#111c2d] tracking-tight mb-4">Experience Overview</h2>
+              <h2 className="text-lg font-bold !text-black tracking-tight mb-4">Experience Overview</h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <div className="bg-[#f0f3ff] p-4 rounded-xl text-center">
                   <p className="text-[10px] text-[#717786] font-semibold uppercase tracking-wider mb-1">Years</p>
-                  <p className="text-xl font-bold text-[#0058bc]">{analysis.experience_years}</p>
+                  <p className="text-xl font-bold !text-black">{analysis.experience_years}</p>
                 </div>
                 <div className="bg-[#f0f3ff] p-4 rounded-xl text-center">
                   <p className="text-[10px] text-[#717786] font-semibold uppercase tracking-wider mb-1">Skills</p>
-                  <p className="text-xl font-bold text-[#0058bc]">{skills.length}</p>
+                  <p className="text-xl font-bold !text-black">{skills.length}</p>
                 </div>
                 <div className="bg-[#f0f3ff] p-4 rounded-xl text-center">
                   <p className="text-[10px] text-[#717786] font-semibold uppercase tracking-wider mb-1">AI Score</p>
-                  <p className="text-xl font-bold text-[#0058bc]">{mainScore}%</p>
+                  <p className="text-xl font-bold !text-black">{mainScore}%</p>
                 </div>
                 <div className="bg-[#f0f3ff] p-4 rounded-xl text-center">
                   <p className="text-[10px] text-[#717786] font-semibold uppercase tracking-wider mb-1">Status</p>

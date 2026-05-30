@@ -44,6 +44,7 @@ export interface Candidate {
   phone_number: string;
   cv_path: string | null;
   applications?: Application[];
+  analysis?: CvAnalysis;
   created_at?: string;
   updated_at?: string;
 }

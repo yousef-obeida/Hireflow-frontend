@@ -14,6 +14,6 @@ export const getCandidate = async (id: number | string): Promise<Candidate> => {
  * Fetches the AI-generated CV analysis for a single candidate by ID.
  */
 export const getCandidateAnalysis = async (id: number | string): Promise<CvAnalysis> => {
-  const response = await api.get<CvAnalysis>(ENDPOINTS.candidates.analysis(id));
-  return response.data;
+  const response = await api.get<ApiSuccessResponse<CvAnalysis>>(ENDPOINTS.candidates.analysis(id));
+  return response.data.data;
 };
