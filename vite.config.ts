@@ -16,8 +16,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
-        // http://localhost:8000/api
+        // target: 'http://localhost:8000',
+        target: 'https://api.hireflow.ruby.ly/',
         changeOrigin: true,
       },
     },

@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useJob } from '../hooks/useJob';
+import { useUpdateJob } from '../hooks/useUpdateJob';
+import { JobFormModal } from '../components/JobFormModal';
 import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import {
@@ -45,13 +48,15 @@ function formatSalary(salary: number | null): string {
 }
 
 /** Location label */
-function formatLocation(location: string): string {
+function formatLocation(location?: string): string {
+  if (!location) return 'Not specified';
+  const l = location.toLowerCase();
   const map: Record<string, string> = {
     onsite: 'Onsite',
     remote: 'Remote',
     hybrid: 'Hybrid',
   };
-  return map[location] ?? location;
+  return map[l] ?? location;
 }
 
 /* ─── Main Page Component ─────────────────────────────────────────── */
@@ -59,6 +64,8 @@ function formatLocation(location: string): string {
 export function JobDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const updateMutation = useUpdateJob();
 
   const { data: job, isLoading, isError, refetch } = useJob(id ?? '');
 
@@ -128,7 +135,7 @@ export function JobDetailPage() {
             </span>
             <span className="inline-flex items-center gap-1.5 text-xs text-[#717786] font-medium bg-[#f0f3ff] px-2.5 py-1 rounded-md">
               <MapPin className="w-3 h-3" />
-              {formatLocation(job.location)}
+              {formatLocation(job.location || (job as any).Location)}
             </span>
             {job.salary && (
               <span className="inline-flex items-center gap-1.5 text-xs text-[#717786] font-medium bg-[#f0f3ff] px-2.5 py-1 rounded-md">
@@ -147,7 +154,7 @@ export function JobDetailPage() {
           <Button
             variant="outline"
             className="px-4 py-2.5 text-sm gap-1.5"
-            onClick={() => navigate(`/jobs?editing=${job.id}`)}
+            onClick={() => setEditModalOpen(true)}
           >
             <Pencil className="w-4 h-4" />
             Edit Job
@@ -194,12 +201,14 @@ export function JobDetailPage() {
       {/* ── Content Grid: Description + Details ──────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Job Description */}
-        <JobInfoCard className="lg:col-span-2" delay={0.15}>
+        <JobInfoCard className="lg:col-span-2 flex flex-col min-h-[200px]" delay={0.15}>
           <h2 className="text-lg font-bold !text-black tracking-tight mb-4">
             Job Description
           </h2>
-          <div className="text-sm text-[#414755] leading-relaxed whitespace-pre-line">
-            {job.description || 'No description provided.'}
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="text-sm text-[#414755] leading-relaxed whitespace-pre-line text-left">
+              {job.description || 'No description provided.'}
+            </div>
           </div>
         </JobInfoCard>
 
@@ -215,7 +224,7 @@ export function JobDetailPage() {
             </div>
             <div className="flex items-center justify-between py-2 border-b border-gray-50">
               <span className="text-xs text-[#717786] font-semibold uppercase tracking-wider">Location</span>
-              <span className="text-sm font-semibold text-[#111c2d]">{formatLocation(job.location)}</span>
+              <span className="text-sm font-semibold text-[#111c2d]">{formatLocation(job.location || (job as any).Location)}</span>
             </div>
             <div className="flex items-center justify-between py-2 border-b border-gray-50">
               <span className="text-xs text-[#717786] font-semibold uppercase tracking-wider">Department</span>
@@ -298,6 +307,22 @@ export function JobDetailPage() {
           </div>
         )}
       </JobInfoCard>
+
+      {job && (
+        <JobFormModal
+          open={editModalOpen}
+          onClose={() => setEditModalOpen(false)}
+          mode="edit"
+          job={job}
+          onSubmit={(data) => {
+            updateMutation.mutate(
+              { id: job.id, data },
+              { onSuccess: () => setEditModalOpen(false) }
+            );
+          }}
+          loading={updateMutation.isPending}
+        />
+      )}
     </div>
   );
 }

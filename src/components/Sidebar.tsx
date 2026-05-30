@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Layout, HelpCircle, LogOut, User, Briefcase, Users, Calendar, Columns3 } from 'lucide-react';
 import { useLogout } from '@/features/auth/api/auth.hooks';
 import { useAuthStore } from '@/features/auth/store/auth.store';
+import { toast } from 'sonner';
 
 interface SidebarProps {
   activeSection: string;
@@ -82,7 +83,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Secondary Bottom Actions */}
       <div className="mt-8 pt-6 border-t border-gray-100 space-y-1.5">
-        <button className="w-full flex items-center gap-3 text-[#414755] px-4 py-3 hover:bg-[#f0f3ff] rounded-xl text-left text-xs font-semibold select-none">
+        <button 
+          onClick={() => toast.info('Contact support@hireflow.com if you need any help')}
+          className="w-full flex items-center gap-3 text-[#414755] px-4 py-3 hover:bg-[#f0f3ff] rounded-xl text-left text-xs font-semibold select-none"
+        >
           <HelpCircle className="w-4 h-4 shrink-0" />
           <span>Help Center</span>
         </button>

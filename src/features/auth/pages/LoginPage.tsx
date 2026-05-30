@@ -36,7 +36,7 @@ export const LoginPage: React.FC = () => {
 
   const handleForgotPassword = (e: React.MouseEvent) => {
     e.preventDefault();
-    toast.info('Password recovery link request simulation initiated.');
+    toast.info('Contact support@hireflow.com to reset password');
   };
 
   const handleContactSales = (e: React.MouseEvent) => {

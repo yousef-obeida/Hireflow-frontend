@@ -285,18 +285,7 @@ export function CvAnalysisPage() {
                 </div>
               )}
 
-              {/* Resume link */}
-              {candidate?.cv_path && (
-                <div className="mt-5 pt-4 border-t border-gray-100">
-                  <button
-                    onClick={() => window.open(candidate.cv_path!, '_blank')}
-                    className="inline-flex items-center gap-1.5 text-sm text-[#0058bc] font-semibold hover:underline"
-                  >
-                    View Full Resume
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              )}
+
             </SectionCard>
 
             {/* Role Alignment Score */}
