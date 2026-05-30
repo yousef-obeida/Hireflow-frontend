@@ -14,8 +14,13 @@ export interface GetUsersFilters {
  * Fetches all users from the backend with optional filters.
  */
 export const getUsers = async (filters?: GetUsersFilters): Promise<User[]> => {
-  const response = await api.get<ApiSuccessResponse<User[]>>(ENDPOINTS.users.all, {
+  const response = await api.get<ApiSuccessResponse<any[]>>(ENDPOINTS.users.all, {
     params: filters,
   });
-  return response.data.data;
+  
+  // The backend might return 'user_id' instead of 'id', so we map it to ensure the frontend works.
+  return response.data.data.map(user => ({
+    ...user,
+    id: user.id ?? user.user_id,
+  })) as User[];
 };

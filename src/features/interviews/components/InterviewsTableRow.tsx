@@ -60,11 +60,11 @@ export const InterviewsTableRow: React.FC<InterviewsTableRowProps> = ({
       {/* Candidate Name */}
       <td className="px-6 py-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-slate-800 text-white flex items-center justify-center text-xs font-medium">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0058bc] to-[#2563eb] text-white flex items-center justify-center text-xs font-bold shrink-0">
             {initials}
           </div>
           <div>
-            <p className="font-semibold text-sm text-[#111c2d] group-hover:underline transition-colors cursor-default">
+            <p className="font-semibold text-sm text-[#111c2d] group-hover:text-[#0058bc] transition-colors">
               {candidateName}
             </p>
             {candidateEmail && (

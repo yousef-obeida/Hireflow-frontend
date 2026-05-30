@@ -74,7 +74,7 @@ export function useInterviewsList() {
     for (const candidate of candidates) {
       if (!candidate.applications?.length) continue;
       for (const app of candidate.applications) {
-        map.set(app.id, { candidate, application: app });
+        map.set(Number(app.id), { candidate, application: app });
       }
     }
     return map;
@@ -88,7 +88,7 @@ export function useInterviewsList() {
       // If the backend already provided candidate data, keep it
       if (interview.application?.candidate?.full_name) return interview;
 
-      const lookup = appLookupMap.get(interview.application_id);
+      const lookup = appLookupMap.get(Number(interview.application_id));
       if (!lookup) return interview;
 
       return {

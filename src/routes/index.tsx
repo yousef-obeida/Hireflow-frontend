@@ -3,6 +3,7 @@ import App from "@/App";
 import { ProtectedRoutes } from "./protected-routes";
 import { PublicRoutes } from "./public-routes";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
+import { ApplicationFormPage } from "@/features/applications/pages/ApplicationFormPage";
 import { CandidatesPage } from "@/features/candidates/pages/CandidatesPage";
 import { JobsPage } from "@/features/jobs/pages/JobsPage";
 import { CvAnalysisPage } from "@/features/candidates/pages/CvAnalysisPage";
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "apply/:jobId?",
-        element: <div className="p-10 text-2xl font-bold">Apply Page (Placeholder)</div>,
+        element: <ApplicationFormPage />,
       },
     ],
   },

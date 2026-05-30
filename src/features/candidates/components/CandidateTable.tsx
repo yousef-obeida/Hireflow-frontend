@@ -55,7 +55,7 @@ export const CandidateTable: React.FC<CandidateTableProps> = ({
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white/50">
+        <tbody>
           {candidates.map((candidate) => {
             const application = candidate.applications?.[0]; // Get most recent application
             const role = application?.job?.title || 'N/A';
@@ -74,23 +74,26 @@ export const CandidateTable: React.FC<CandidateTableProps> = ({
               : '??';
 
             // Stage color mapping
-            let stageColor = 'bg-[#e0e7ff] text-[#3730a3]'; // Default blue-ish
-            if (stageName.toLowerCase().includes('technical')) stageColor = 'bg-[#e0f2fe] text-[#0369a1]';
-            else if (stageName.toLowerCase().includes('manager')) stageColor = 'bg-[#f3e8ff] text-[#7e22ce]';
-            else if (stageName.toLowerCase().includes('offer')) stageColor = 'bg-[#dcfce7] text-[#166534]';
+            const stageLower = stageName.toLowerCase();
+            let stageColor = 'bg-[#d0e1fb] text-[#0058bc]'; // HR blue
+            if (stageLower.includes('hired')) {
+              stageColor = 'bg-[#dcfce7] text-[#166534]'; // Green
+            } else if (stageLower.includes('rejected')) {
+              stageColor = 'bg-[#ffdad6] text-[#ba1a1a]'; // Red
+            }
 
             return (
               <tr
                 key={candidate.id}
-                className="hover:bg-white transition-colors"
+                className="group hover:bg-[#fafbff] transition-colors duration-150 border-b border-gray-100 last:border-0"
               >
-                <td className="px-6 py-4 text-center">
-                  <div className="flex items-center justify-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center text-sm font-medium">
+                <td className="px-6 py-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0058bc] to-[#2563eb] text-white flex items-center justify-center text-xs font-bold shrink-0">
                       {initials}
                     </div>
                     <div>
-                      <p className="font-semibold text-sm text-[#111c2d]">
+                      <p className="font-semibold text-sm text-[#111c2d] group-hover:text-[#0058bc] transition-colors">
                         {candidate.full_name}
                       </p>
                       <p className="text-xs text-[#717786] mt-0.5 font-medium">

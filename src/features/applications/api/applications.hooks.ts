@@ -4,6 +4,7 @@ import { queryKeys } from "@/api/query-keys";
 import { getErrorMessage } from "@/api/helpers/get-error-message";
 import {
   fetchApplicationForm,
+  fetchAvailableJobs,
   submitApplication,
 } from "@/features/applications/api/applications.service";
 
@@ -19,6 +20,18 @@ export function useApplicationForm() {
     queryKey: ["applications", "form"] as const,
     queryFn: fetchApplicationForm,
     // Public endpoint — longer stale time is fine
+    staleTime: 60 * 1000,
+  });
+}
+
+/**
+ * GET /api/available-jobs — public list of open positions.
+ * Used by the application form to populate the job selector dropdown.
+ */
+export function useAvailableJobs() {
+  return useQuery({
+    queryKey: ["applications", "available-jobs"] as const,
+    queryFn: fetchAvailableJobs,
     staleTime: 60 * 1000,
   });
 }

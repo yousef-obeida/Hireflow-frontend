@@ -22,6 +22,10 @@ export interface UpdateUserRequest {
  * Payload shape matches the backend UpdateUserRequest validation (all fields optional).
  */
 export const updateUser = async (id: number | string, data: UpdateUserPayload): Promise<User> => {
-  const response = await api.put<ApiSuccessResponse<User>>(ENDPOINTS.users.update(id), data);
-  return response.data.data;
+  const response = await api.put<ApiSuccessResponse<any>>(ENDPOINTS.users.update(id), data);
+  const user = response.data.data;
+  return {
+    ...user,
+    id: user.id ?? user.user_id,
+  } as User;
 };
