@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { MoreHorizontal } from 'lucide-react';
 import type { DesignCandidate as Candidate } from '@/types';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 interface CandidateCardProps {
   candidate: Candidate;

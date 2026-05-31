@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 import { useLogin } from '@/features/auth/hooks/useLogin';
 import { loginSchema, type LoginFormValues } from '@/features/auth/schemas/login.schema';
 import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import officeWallpaper from '@/assets/images/office_wallpaper.png';
 
 export const LoginPage: React.FC = () => {

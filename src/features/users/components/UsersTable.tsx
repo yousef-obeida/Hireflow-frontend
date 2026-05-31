@@ -6,7 +6,7 @@ import { UsersTableSkeleton } from './UsersTableSkeleton';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { Users } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 interface UsersTableProps {
   users: User[];

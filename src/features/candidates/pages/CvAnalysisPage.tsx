@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCandidate, useCandidateAnalysis } from '../hooks/useCandidate';
 import { useAuthStore } from '@/store/auth-store';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { ArrowLeft, MapPin, Clock, Briefcase, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 

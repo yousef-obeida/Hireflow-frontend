@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Copy, Check, Info, Sparkles, Send, Trash2, CalendarCheck } from 'lucide-react';
 import type { DesignCandidate as Candidate, BadgeVariant, FormValues } from '@/types';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';

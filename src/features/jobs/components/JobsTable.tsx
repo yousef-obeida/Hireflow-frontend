@@ -6,7 +6,7 @@ import { JobsTableSkeleton } from './JobsTableSkeleton';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { Briefcase } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 interface JobsTableProps {
   jobs: Job[];
