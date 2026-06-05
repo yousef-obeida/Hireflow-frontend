@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Search, SlidersHorizontal, X, UserPlus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { Select } from '@/components/ui/Select';
 import type { GetUsersFilters } from '../api/getUsers';
 

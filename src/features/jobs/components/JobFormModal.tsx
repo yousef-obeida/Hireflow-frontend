@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Select } from '@/components/ui/Select';
 import { Toggle } from '@/components/ui/Toggle';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { createJobSchema } from '../schemas/job.schema';
 import type { CreateJobFormValues } from '../schemas/job.schema';
 import type { Job } from '@/types';

@@ -6,7 +6,7 @@ import { InterviewsTableSkeleton } from './InterviewsTableSkeleton';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { ErrorState } from '@/components/ui/ErrorState';
 import { CalendarCheck } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 
 interface InterviewsTableProps {
   interviews: Interview[];

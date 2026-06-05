@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Modal } from '@/components/ui/Modal';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { createInterviewSchema } from '../schemas/interview.schema';
 import type { CreateInterviewFormValues } from '../schemas/interview.schema';
 import type { Interview } from '@/types';

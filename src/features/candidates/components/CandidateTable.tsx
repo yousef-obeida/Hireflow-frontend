@@ -7,7 +7,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Candidate } from '@/types';
 import { format } from 'date-fns';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { Sparkles } from 'lucide-react';
 
 interface CandidateTableProps {

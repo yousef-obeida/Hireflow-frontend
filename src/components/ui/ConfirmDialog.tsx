@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from './Modal';
-import { Button } from './button';
+import { Button } from './Button';
 import { AlertTriangle } from 'lucide-react';
 
 interface ConfirmDialogProps {
@@ -49,9 +49,8 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
       <div className="flex flex-col items-center text-center py-2">
         {/* Icon */}
         <div
-          className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 mt-[-16px] ${
-            isDanger ? 'bg-[#ffdad6]' : 'bg-[#e7eeff]'
-          }`}
+          className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 mt-[-16px] ${isDanger ? 'bg-[#ffdad6]' : 'bg-[#e7eeff]'
+            }`}
         >
           <AlertTriangle
             className={`w-7 h-7 ${isDanger ? 'text-[#ba1a1a]' : 'text-[#0058bc]'}`}
@@ -79,11 +78,10 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
           <button
             onClick={onConfirm}
             disabled={loading}
-            className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl transition-colors min-w-[100px] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed ${
-              isDanger
+            className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl transition-colors min-w-[100px] cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed ${isDanger
                 ? 'bg-[#ba1a1a] text-white hover:bg-[#a01616]'
                 : 'bg-[#0058bc] text-white hover:bg-[#0070eb]'
-            }`}
+              }`}
           >
             {loading && (
               <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

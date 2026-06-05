@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Columns3, List, RefreshCw } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { PipelineColumn } from '../components/PipelineColumn';
 import { usePipeline } from '../hooks/usePipeline';
 import { useMoveCandidateStage } from '../hooks/useMoveCandidateStage';

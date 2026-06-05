@@ -1,7 +1,7 @@
 import { useCandidates } from '../hooks/useCandidates';
 import { CandidateTable } from '../components/CandidateTable';
 import { CandidateFilters } from '../components/CandidateFilters';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 
 export function CandidatesPage() {
   const { 

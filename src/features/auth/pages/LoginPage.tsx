@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 import { useLogin } from '@/features/auth/hooks/useLogin';
 import { loginSchema, type LoginFormValues } from '@/features/auth/schemas/login.schema';
 import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import officeWallpaper from '@/assets/images/office_wallpaper.png';
 
 export const LoginPage: React.FC = () => {
@@ -96,9 +96,9 @@ export const LoginPage: React.FC = () => {
         <div className="max-w-md w-full mx-auto my-auto">
           {/* Header Block */}
           <div className="mb-8 text-left">
-            <h2 
+            <h2
               className="text-3xl !font-bold text-black dark:text-black tracking-tight font-heading mb-2"
-              style={{ color: 'black' , fontWeight: 'bold' }}
+              style={{ color: 'black', fontWeight: 'bold' }}
             >
               Welcome back
             </h2>

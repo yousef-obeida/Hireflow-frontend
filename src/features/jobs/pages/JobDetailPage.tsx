@@ -17,7 +17,7 @@ import {
   ClipboardList,
   Pencil,
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { JobStatusBadge } from '../components/JobStatusBadge';
 import { JobDetailSkeleton } from '../components/JobDetailSkeleton';
 import { JobInfoCard } from '../components/JobInfoCard';
